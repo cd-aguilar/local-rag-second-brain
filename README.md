@@ -8,20 +8,14 @@ I keep my technical notes, lab writeups, and certification study material in Obs
 
 ## Architecture
 
-```
-Obsidian Vault (.md files)
-        |
-        v
- Markdown-aware chunking (LangChain MarkdownTextSplitter)
-        |
-        v
- Local embeddings (Ollama, nomic-embed-text)
-        |
-        v
- ChromaDB (persistent local vector store)
-        |
-        v
- Retrieval (similarity search) --> Local LLM (Ollama, qwen2.5:7b) --> Answer + cited sources
+```mermaid
+flowchart TD
+    A["Obsidian Vault (.md files)"] --> B["Markdown-aware chunking<br/>(LangChain MarkdownTextSplitter)"]
+    B --> C["Local embeddings<br/>(Ollama, nomic-embed-text)"]
+    C --> D[("ChromaDB<br/>persistent local vector store")]
+    D --> E["Retrieval<br/>(similarity search)"]
+    E --> F["Local LLM<br/>(Ollama, qwen2.5:7b)"]
+    F --> G["Answer + cited sources"]
 ```
 
 ## Stack
